@@ -21,6 +21,7 @@ namespace DSA_FinalProject
             InitializeComponent();
             taskTypeComboBox.Items.AddRange(new string[] { "Personal Tasks", "School Tasks", "Work Tasks", "Other Tasks" });
         }
+
         private DateTimePicker DueDateTimePicker;
         private ComboBox TaskTypeComboBox;
 

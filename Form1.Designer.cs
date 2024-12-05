@@ -227,7 +227,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1374, 771);
+            ClientSize = new Size(1374, 786);
             Controls.Add(dueDateTimePicker);
             Controls.Add(label4);
             Controls.Add(taskTypeComboBox);
@@ -242,6 +242,7 @@
             Controls.Add(titleTextBox);
             Controls.Add(TitleLabel);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "ToDoListForm";
             StartPosition = FormStartPosition.CenterScreen;
