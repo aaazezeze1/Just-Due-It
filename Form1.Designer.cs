@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             TitleLabel = new Label();
             titleTextBox = new TextBox();
             label2 = new Label();
@@ -80,14 +80,14 @@
             toDoListView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             toDoListView.BackgroundColor = Color.White;
             toDoListView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Window;
-            dataGridViewCellStyle9.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            toDoListView.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            toDoListView.DefaultCellStyle = dataGridViewCellStyle1;
             toDoListView.Location = new Point(527, 161);
             toDoListView.Name = "toDoListView";
             toDoListView.RowHeadersVisible = false;
@@ -242,6 +242,7 @@
             Controls.Add(titleTextBox);
             Controls.Add(TitleLabel);
             Controls.Add(label1);
+            MaximizeBox = false;
             Name = "ToDoListForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ToDoListApp";

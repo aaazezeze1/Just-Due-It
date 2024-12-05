@@ -143,7 +143,7 @@ namespace DSA_FinalProject
                     todoList.Rows.Add(item.Title, item.Description, item.TaskType, item.DueDate);
                 }
 
-                MessageBox.Show("Welcome to ToDoList App!.\nMade by Amazing Cabiles, Karylle Banaag, Ivory Deriquito, Miyuki Oshiro, Clyde Reyes");
+                MessageBox.Show("Welcome to ToDoList App!.\n\nMade by Amazing Cabiles, Karylle Banaag, Ivory Deriquito, Miyuki Oshiro, Zyrhus Brinas, Clyde Reyes");
             }
             else
             {
