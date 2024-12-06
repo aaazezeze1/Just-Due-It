@@ -61,13 +61,16 @@ namespace DSA_FinalProject
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            try
+            if (MessageBox.Show("Are you sure you want to delete?", "Delete To Do", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                todoList.Rows[toDoListView.CurrentCell.RowIndex].Delete();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: Unable to Delete");
+                try
+                {
+                    todoList.Rows[toDoListView.CurrentCell.RowIndex].Delete();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: Unable to Delete");
+                }
             }
         }
 

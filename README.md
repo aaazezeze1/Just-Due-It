@@ -5,7 +5,7 @@ Made by Amazing Grace Cabiles, Karylle Banaag, Ivory Deriquito, Miyuki Oshiro, Z
 
 # Technologies Used
 1. C# and .NET 8
-2. Visual Studio 17.11.2 or Higher
+2. Visual Studio 17.12.3
 3. Newtonsoft.Json by James Newton-King
 
 # Important Notes
