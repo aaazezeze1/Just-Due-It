@@ -43,6 +43,10 @@ namespace DSA_FinalProject
 
             // Load data from the JSON file if it exists
             LoadDataFromJson();
+
+            searchButton.Click += searchButton_Click;
+            sortDateButton.Click += sortDateButton_Click;
+            sortTypeButton.Click += sortTypeButton_Click;
         }
 
         private void newButton_Click(object sender, EventArgs e)
@@ -204,6 +208,60 @@ namespace DSA_FinalProject
         {
             saveButton.ResetBackColor();
             saveButton.BackColor = SystemColors.Highlight;
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string keyword = searchTextBox.Text.ToLower();
+
+            // Filter rows containing the keyword in any column like title, description and type
+            DataView dv = todoList.DefaultView;
+            dv.RowFilter = $"Title LIKE '%{keyword}%' OR Description LIKE '%{keyword}%' OR [Task Type] LIKE '%{keyword}%'";
+        }
+
+        private void sortTypeButton_Click(object sender, EventArgs e)
+        {
+            DataView dv = todoList.DefaultView;
+            dv.Sort = "[Task Type] ASC"; // Sort by Task Type in alphabetical order
+        }
+
+        private void sortDateButton_Click(object sender, EventArgs e)
+        {
+            DataView dv = todoList.DefaultView;
+            dv.Sort = "Due Date ASC"; // Sort by Due Date in ascending or decending order
+        }
+
+        private void searchButton_MouseHover(object sender, EventArgs e)
+        {
+            searchButton.BackColor = Color.Black;
+        }
+
+        private void searchButton_MouseLeave(object sender, EventArgs e)
+        {
+            searchButton.ResetBackColor();
+            searchButton.BackColor = SystemColors.Highlight;
+        }
+
+        private void sortTypeButton_MouseHover(object sender, EventArgs e)
+        {
+            sortTypeButton.BackColor = Color.Black;
+        }
+
+        private void sortTypeButton_MouseLeave(object sender, EventArgs e)
+        {
+            sortTypeButton.ResetBackColor();
+            sortTypeButton.BackColor = SystemColors.Highlight;
+        }
+
+        private void sortDateButton_MouseHover(object sender, EventArgs e)
+        {
+            sortDateButton.BackColor = Color.Black;
+        }
+
+        private void sortDateButton_MouseLeave(object sender, EventArgs e)
+        {
+            sortDateButton.ResetBackColor();
+            sortDateButton.BackColor = SystemColors.Highlight;
         }
     }
 }
