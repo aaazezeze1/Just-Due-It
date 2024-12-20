@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToDoListForm));
             TitleLabel = new Label();
             titleTextBox = new TextBox();
             label2 = new Label();
@@ -84,19 +85,19 @@
             toDoListView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             toDoListView.BackgroundColor = Color.White;
             toDoListView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            toDoListView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            toDoListView.DefaultCellStyle = dataGridViewCellStyle1;
             toDoListView.Location = new Point(536, 163);
             toDoListView.Name = "toDoListView";
             toDoListView.RowHeadersVisible = false;
             toDoListView.RowHeadersWidth = 51;
-            toDoListView.Size = new Size(825, 513);
+            toDoListView.Size = new Size(702, 513);
             toDoListView.TabIndex = 4;
             // 
             // label1
@@ -108,7 +109,7 @@
             label1.Name = "label1";
             label1.Size = new Size(556, 110);
             label1.TabIndex = 6;
-            label1.Text = "To Do List";
+            label1.Text = "Just Due It";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // descriptionTextBox
@@ -127,7 +128,7 @@
             newButton.FlatStyle = FlatStyle.Flat;
             newButton.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             newButton.ForeColor = Color.White;
-            newButton.Location = new Point(617, 693);
+            newButton.Location = new Point(536, 693);
             newButton.Name = "newButton";
             newButton.Size = new Size(171, 68);
             newButton.TabIndex = 8;
@@ -144,7 +145,7 @@
             editButton.FlatStyle = FlatStyle.Flat;
             editButton.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             editButton.ForeColor = Color.White;
-            editButton.Location = new Point(794, 693);
+            editButton.Location = new Point(713, 693);
             editButton.Name = "editButton";
             editButton.Size = new Size(171, 68);
             editButton.TabIndex = 9;
@@ -161,7 +162,7 @@
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             deleteButton.ForeColor = Color.White;
-            deleteButton.Location = new Point(971, 693);
+            deleteButton.Location = new Point(890, 693);
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(171, 68);
             deleteButton.TabIndex = 10;
@@ -178,7 +179,7 @@
             saveButton.FlatStyle = FlatStyle.Flat;
             saveButton.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             saveButton.ForeColor = Color.White;
-            saveButton.Location = new Point(1148, 693);
+            saveButton.Location = new Point(1067, 693);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(171, 68);
             saveButton.TabIndex = 11;
@@ -231,7 +232,7 @@
             searchTextBox.Location = new Point(536, 122);
             searchTextBox.Name = "searchTextBox";
             searchTextBox.PlaceholderText = "Search for Task";
-            searchTextBox.Size = new Size(422, 27);
+            searchTextBox.Size = new Size(306, 27);
             searchTextBox.TabIndex = 16;
             // 
             // searchButton
@@ -241,7 +242,7 @@
             searchButton.FlatStyle = FlatStyle.Flat;
             searchButton.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             searchButton.ForeColor = Color.White;
-            searchButton.Location = new Point(971, 113);
+            searchButton.Location = new Point(848, 113);
             searchButton.Name = "searchButton";
             searchButton.Size = new Size(83, 44);
             searchButton.TabIndex = 17;
@@ -258,7 +259,7 @@
             sortTypeButton.FlatStyle = FlatStyle.Flat;
             sortTypeButton.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sortTypeButton.ForeColor = Color.White;
-            sortTypeButton.Location = new Point(1060, 113);
+            sortTypeButton.Location = new Point(937, 113);
             sortTypeButton.Name = "sortTypeButton";
             sortTypeButton.Size = new Size(158, 44);
             sortTypeButton.TabIndex = 18;
@@ -275,7 +276,7 @@
             sortDateButton.FlatStyle = FlatStyle.Flat;
             sortDateButton.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sortDateButton.ForeColor = Color.White;
-            sortDateButton.Location = new Point(1224, 113);
+            sortDateButton.Location = new Point(1101, 113);
             sortDateButton.Name = "sortDateButton";
             sortDateButton.Size = new Size(137, 44);
             sortDateButton.TabIndex = 19;
@@ -290,7 +291,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1373, 781);
+            ClientSize = new Size(1280, 781);
             Controls.Add(sortDateButton);
             Controls.Add(sortTypeButton);
             Controls.Add(searchButton);
@@ -310,10 +311,11 @@
             Controls.Add(TitleLabel);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "ToDoListForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ToDoListApp";
+            Text = "Just Due It";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)toDoListView).EndInit();
             ResumeLayout(false);

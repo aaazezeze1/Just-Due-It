@@ -51,25 +51,52 @@ namespace DSA_FinalProject
 
         private void newButton_Click(object sender, EventArgs e)
         {
+            // Save the current row index to re-select it after clearing the textboxes
+            int selectedRowIndex = toDoListView.CurrentCell.RowIndex;
+
+            // Clear the textboxes for new task entry
             titleTextBox.Text = "";
             descriptionTextBox.Text = "";
+            TaskTypeComboBox.SelectedIndex = -1; // Optionally reset the combo box
+            dueDateTimePicker.Value = DateTime.Now; // Reset due date to current date or default
+
+            // Re-select the previously selected row to keep the highlight
+            if (selectedRowIndex >= 0 && selectedRowIndex < todoList.Rows.Count)
+            {
+                toDoListView.CurrentCell = toDoListView.Rows[selectedRowIndex].Cells[0]; // Re-focus the row
+            }
         }
+
+        // Application of Arrays
+        private int currentEditIndex = -1; // This will store the index of the task being edited
 
         private void editButton_Click(object sender, EventArgs e)
         {
+            // Set the isEditing flag to true
             isEditing = true;
 
-            titleTextBox.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[0].ToString();
-            descriptionTextBox.Text = todoList.Rows[toDoListView.CurrentCell.RowIndex].ItemArray[1].ToString();
+            // Get the index of the selected row
+            currentEditIndex = toDoListView.CurrentCell.RowIndex;
+
+            // Set the textboxes with the current task data
+            titleTextBox.Text = todoList.Rows[currentEditIndex]["Title"].ToString();
+            descriptionTextBox.Text = todoList.Rows[currentEditIndex]["Description"].ToString();
+            TaskTypeComboBox.Text = todoList.Rows[currentEditIndex]["Task Type"].ToString();
+            dueDateTimePicker.Value = Convert.ToDateTime(todoList.Rows[currentEditIndex]["Due Date"]);
+
         }
 
+        // Application of Stack
+        private Stack<DataRow> deletedItems = new Stack<DataRow>();
         private void deleteButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete?", "Delete To Do", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
                 {
-                    todoList.Rows[toDoListView.CurrentCell.RowIndex].Delete();
+                    DataRow rowToDelete = todoList.Rows[toDoListView.CurrentCell.RowIndex];
+                    deletedItems.Push(rowToDelete); // Push deleted row onto the stack
+                    rowToDelete.Delete(); // Delete the row from DataTable
                 }
                 catch (Exception ex)
                 {
@@ -78,26 +105,44 @@ namespace DSA_FinalProject
             }
         }
 
+        // Application of Queue
+        private Queue<ToDoItem> taskQueue = new Queue<ToDoItem>();
+
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (isEditing)
+            // Create a new task object
+            var newTask = new ToDoItem
             {
-                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Title"] = titleTextBox.Text;
-                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Description"] = descriptionTextBox.Text;
-                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Task Type"] = TaskTypeComboBox.Text;
-                todoList.Rows[toDoListView.CurrentCell.RowIndex]["Due Date"] = dueDateTimePicker.Value;
+                Title = titleTextBox.Text,
+                Description = descriptionTextBox.Text,
+                TaskType = TaskTypeComboBox.Text,
+                DueDate = dueDateTimePicker.Value
+            };
+
+            if (isEditing && currentEditIndex != -1)
+            {
+                // If we're editing an existing task, update that row in the DataTable
+                DataRow editedRow = todoList.Rows[currentEditIndex];
+                editedRow["Title"] = newTask.Title;
+                editedRow["Description"] = newTask.Description;
+                editedRow["Task Type"] = newTask.TaskType;
+                editedRow["Due Date"] = newTask.DueDate;
+                // Clear the editing state
+                isEditing = false;
+                currentEditIndex = -1; // Reset the edit index
             }
             else
             {
-                todoList.Rows.Add(titleTextBox.Text, descriptionTextBox.Text, TaskTypeComboBox.Text, dueDateTimePicker.Value);
+                // If we're not editing, add a new task to the DataTable
+                todoList.Rows.Add(newTask.Title, newTask.Description, newTask.TaskType, newTask.DueDate);
             }
 
+            // Save data to JSON after editing or adding
+            SaveDataToJson();
+
+            // Clear the input fields
             titleTextBox.Text = "";
             descriptionTextBox.Text = "";
-            isEditing = false;
-
-            // Save the data after saving
-            SaveDataToJson();
         }
 
         // Method to save data to JSON
@@ -125,8 +170,6 @@ namespace DSA_FinalProject
 
             // Write the JSON to a file
             File.WriteAllText(filePath, json);
-
-            MessageBox.Show("Data saved successfully.");
         }
 
         // Method to load data from JSON
@@ -150,8 +193,6 @@ namespace DSA_FinalProject
                 {
                     todoList.Rows.Add(item.Title, item.Description, item.TaskType, item.DueDate);
                 }
-
-                MessageBox.Show("Welcome to ToDoList App!.\n\nMade by Amazing Cabiles, Karylle Banaag, Ivory Deriquito, Miyuki Oshiro, Zyrhus Brinas, Clyde Reyes");
             }
             else
             {
